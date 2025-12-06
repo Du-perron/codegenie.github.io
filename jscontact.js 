@@ -1,0 +1,66 @@
+// js/contact.js - Contact Section Functionality
+
+// Form validation and submission
+const contactForm = document.querySelector('#contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const nameInput = this.querySelector('input[type="text"]');
+        const emailInput = this.querySelector('input[type="email"]');
+        const messageInput = this.querySelector('textarea');
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        // Validation
+        if (name === '' || email === '' || message === '') {
+            alert('❌ Oops! Please fill in all fields! 📝');
+            console.log('⚠️ Form validation failed: Missing fields');
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('❌ Invalid email format! Please check your email address. 📧');
+            console.log('⚠️ Invalid email format:', email);
+            return;
+        }
+
+        // Success message
+        alert('✅ Message sent successfully! 🎉\nThank you, ' + name + '! 🙌\nI\'ll get back to you soon! 📬');
+        console.log('✨ Message sent from:', name, '(' + email + ')');
+        console.log('💬 Message:', message);
+
+        // Reset form
+        this.reset();
+
+        // Button feedback
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.style.backgroundColor = '#2ecc71';
+        submitBtn.textContent = '✅ Message Sent!';
+
+        setTimeout(() => {
+            submitBtn.style.backgroundColor = '';
+            submitBtn.textContent = originalText;
+        }, 3000);
+    });
+}
+
+// Input focus effects
+const formInputs = document.querySelectorAll('.form-input, .form-textarea');
+formInputs.forEach(input => {
+    input.addEventListener('focus', function() {
+        this.style.transform = 'scale(1.02)';
+        console.log('📝 Input focused');
+    });
+
+    input.addEventListener('blur', function() {
+        this.style.transform = 'scale(1)';
+    });
+});
+
+console.log('📧 Contact section loaded!');

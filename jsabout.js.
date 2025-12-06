@@ -1,0 +1,32 @@
+// js/about.js - About Section Functionality
+
+// Add animation to about text on scroll
+const aboutTexts = document.querySelectorAll('.about-text');
+
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeIn 0.6s ease-in-out';
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+aboutTexts.forEach(text => {
+    observer.observe(text);
+});
+
+// Add hover effect to about section
+const aboutSection = document.querySelector('.about-section');
+if (aboutSection) {
+    aboutSection.addEventListener('mouseenter', function() {
+        console.log('💫 About section hovered!');
+    });
+}
+
+console.log('🌟 About section loaded!');
