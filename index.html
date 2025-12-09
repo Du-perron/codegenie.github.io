@@ -313,6 +313,123 @@
             box-shadow: 0 6px 20px rgba(0, 212, 255, 0.5);
         }
 
+        .github-section {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 998;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .github-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .github-btn::before {
+            content: '🐙';
+            font-size: 18px;
+        }
+
+        .github-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .video-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .video-btn::before {
+            content: '🎥';
+            font-size: 18px;
+        }
+
+        .video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
+            background: linear-gradient(135deg, #ee5a6f 0%, #ff6b6b 100%);
+        }
+
+        body.dark-mode .github-btn,
+        body.dark-mode .video-btn {
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+        }
+
+        body.dark-mode .github-btn:hover,
+        body.dark-mode .video-btn:hover {
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .video-container {
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(220, 240, 255, 0.98) 100%);
+            padding: 15px;
+        }
+
+        body.dark-mode .video-container {
+            background: linear-gradient(135deg, rgba(45, 45, 80, 0.9) 0%, rgba(55, 65, 100, 0.9) 100%);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .video-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        body.dark-mode .video-title {
+            color: #00d4ff;
+        }
+
+        .video-description {
+            color: #555;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        body.dark-mode .video-description {
+            color: #b0b0b0;
+        }
+
         .page-container {
             padding: 20px;
             max-width: 1200px;
@@ -655,6 +772,19 @@
                 width: 95%;
                 padding: 20px;
             }
+
+            .github-section {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+                flex-direction: row;
+            }
+
+            .github-btn,
+            .video-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -675,6 +805,16 @@
             <button class="dark-mode-btn" onclick="toggleDarkMode()">Dark Mode</button>
         </div>
     </nav>
+
+    <!-- GitHub & Video Buttons -->
+    <div class="github-section">
+        <a href="https://github.com/YOUR-USERNAME/my-portfolio" target="_blank" class="github-btn" title="View on GitHub">
+            View on GitHub
+        </a>
+        <a href="#" onclick="alert('Upload your demo video to YouTube!')" class="video-btn" title="Watch demo">
+            Watch Demo
+        </a>
+    </div>
 
     <!-- Search Modal -->
     <div class="search-modal" id="searchModal">
@@ -697,6 +837,17 @@
             <img src="https://i.postimg.cc/mrC8mtFb/1D3A5180.jpg" alt="Kayitare Du-Perron" class="profile-pic">
             <p style="text-align: center; font-size: 1.2rem;">Hi! I'm <b>Kayitare Du-Perron</b></p>
             <p style="text-align: center;">Full Stack Developer & Tech Enthusiast</p>
+            
+            <!-- VIDEO ADDED HERE -->
+            <div class="video-container">
+                <div class="video-title">🎬 Watch My Portfolio Demo</div>
+                <video controls width="100%" height="auto">
+                    <source src="https://fcsqbqyomghwjhlnmvgn.supabase.co/storage/v1/object/public/attachments/83a6b051-a11b-4bfb-9d44-64b20b85326c.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p class="video-description">Click play to see my portfolio in action! 🚀</p>
+            </div>
+            
             <p style="text-align: center; margin-top: 2rem;">Click the navigation buttons above to explore my portfolio! 👆</p>
             <div class="page-indicator">Page 1 of 7</div>
         </div>
